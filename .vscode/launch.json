@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-NinjagoldApplication<ninjagold>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.dojo.ninjagold.NinjagoldApplication",
+            "projectName": "ninjagold",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
