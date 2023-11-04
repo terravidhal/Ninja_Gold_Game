@@ -25,7 +25,7 @@ public class NinjaController {
 
 		if (session.getAttribute("ninja_gold") == null) {
 			session.setAttribute("ninja_gold", 0);
-			session.setAttribute("activities_texts", new ArrayList<ArrayList<Object>>());
+			session.setAttribute("activities_details", new ArrayList<ArrayList<Object>>());
 		}
 
 		return "index.jsp";
@@ -35,7 +35,7 @@ public class NinjaController {
 	@RequestMapping("/reset")
 	public String reset(HttpSession session) {
 		session.setAttribute("ninja_gold", 0);
-		session.setAttribute("activities_texts", new ArrayList<ArrayList<Object>>());
+		session.setAttribute("activities_details", new ArrayList<ArrayList<Object>>());
 
 		return "redirect:/";
 	}
@@ -44,7 +44,7 @@ public class NinjaController {
 	public String process_money(@RequestParam(value = "building") String building,
 			HttpSession session) {
 		Integer ninja_gold = (Integer) session.getAttribute("ninja_gold");
-		ArrayList<Object> activities_texts = (ArrayList<Object>) session.getAttribute("activities_texts");
+		ArrayList<Object> activities_details = (ArrayList<Object>) session.getAttribute("activities_details");
 		Integer amount = 0;
 
 		if (building.equals("farm")) {
@@ -57,7 +57,7 @@ public class NinjaController {
 			HashMap<Boolean, String> playInfos = new HashMap<Boolean, String>();
 			playInfos.put(true, "You entered a " + building + " an earned " + amount + " gold " + ". " + "( "
 					+ formattedDate + " )");
-			activities_texts.add(playInfos);
+			activities_details.add(playInfos);
 
 		} else if (building.equals("cave")) {
 			amount = new Random().nextInt(6) + 5; // entre 5 et 10
@@ -68,7 +68,7 @@ public class NinjaController {
 			HashMap<Boolean, String> playInfos = new HashMap<Boolean, String>();
 			playInfos.put(true, "You entered a " + building + " an earned " + amount + " gold " + ". " + "( "
 					+ formattedDate + " )");
-			activities_texts.add(playInfos);
+			activities_details.add(playInfos);
 
 		} else if (building.equals("house")) {
 			amount = new Random().nextInt(4) + 2; // entre 2 et 5
@@ -79,7 +79,7 @@ public class NinjaController {
 			HashMap<Boolean, String> playInfos = new HashMap<Boolean, String>();
 			playInfos.put(true, "You entered a " + building + " an earned " + amount + " gold " + ". " + "( "
 					+ formattedDate + " )");
-			activities_texts.add(playInfos);
+			activities_details.add(playInfos);
 
 		} else if (building.equals("quest")) {
 			amount = new Random().nextInt(51); // entre 0 et 5
@@ -92,7 +92,7 @@ public class NinjaController {
 				HashMap<Boolean, String> playInfos = new HashMap<Boolean, String>();
 				playInfos.put(true, "You entered a " + building + " an earned " + amount + " gold " + ". " + "( "
 						+ formattedDate + " )");
-				activities_texts.add(playInfos);
+				activities_details.add(playInfos);
 
 			} else {
 				ninja_gold -= amount;
@@ -102,12 +102,12 @@ public class NinjaController {
 				HashMap<Boolean, String> playInfos = new HashMap<Boolean, String>();
 				playInfos.put(false, "You failed a " + building + " an lost " + amount + " gold. Ouch " + ". " + "( "
 						+ formattedDate + " )");
-				activities_texts.add(playInfos);
+				activities_details.add(playInfos);
 			}
 		}
 
 		session.setAttribute("ninja_gold", ninja_gold);
-		session.setAttribute("activities_texts", activities_texts);
+		session.setAttribute("activities_details", activities_details);
 
 		return "redirect:/";
 	}

@@ -15,7 +15,7 @@
 <body>
     <header>
         <h1>
-            <span>Your Gold:</span><span class="titleCounter generalBorder center">
+            <span>Your Gold:</span><span class="titleCounter Border center">
                 <c:out value="${ninja_gold}"/>
             </span>
             <span class="reset">
@@ -24,7 +24,7 @@
         </h1>
     </header>
     <main>
-        <div class="buildingCard generalBorder">
+        <div class="structure Border">
             <h2>Farm</h2>
             <p>(earns 10-20 golds)</p>
             <form action="/process_money" method="post">
@@ -32,7 +32,7 @@
                 <input type="submit" value="Find Gold!"/>
             </form>
         </div>
-        <div class="buildingCard generalBorder">
+        <div class="structure Border">
             <h2>Cave</h2>
             <p>(earns 5-10 golds)</p>
             <form action="/process_money" method="post">
@@ -40,7 +40,7 @@
                 <input type="submit" value="Find Gold!"/>
             </form>
         </div>
-        <div class="buildingCard generalBorder">
+        <div class="structure Border">
             <h2>House</h2>
             <p>(earns 2-5 golds)</p>
             <form action="/process_money" method="post">
@@ -48,7 +48,7 @@
                 <input type="submit" value="Find Gold!"/>
             </form>
         </div>
-        <div class="buildingCard generalBorder">
+        <div class="structure Border">
             <h2>Quest</h2>
             <p>(earns 0-50 golds)</p>
             <form action="/process_money" method="post">
@@ -59,8 +59,8 @@
     </main>
     <footer>
         <span>Activities</span>
-        <div class="activities_chart generalBorder">
-            <c:forEach var="elt" items="${activities_texts}">
+        <div class="activities_contain Border">
+            <c:forEach var="elt" items="${activities_details}">
                     <c:forEach var="entry" items="${elt}">
                         <p class=${entry.key? "true_text" : "false_text" }>
                             <c:out value="${entry.value}" />
